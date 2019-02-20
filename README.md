@@ -38,12 +38,22 @@ manually setting the SysTick timer value to 0 after unlocking: so that a
 successful thread-switch is attempted (in case one was missed when the thread
 was locked).
 
+**SPECIAL NOTE:** The main thread _cannot_ be exited! If you think about it,
+it would be unreasonable that the main thread should be exited, since there
+would be nowhere for the thread-switcing routine to return to. As such, the
+main thread will simply branch to an infinite loop when it calls *threadexit*.
+In the future, I hope to implement a flag that declares the main thread as
+exited, in which case it is skipped until all other threads have exited. If all
+threads have exited, the threading system should reasonably be disabled and the
+processor should probably be put into deepsleep indefinitely.
+
 ## TODOS:
 * Automatic thread-switching after unlock if a switch was missed
 * Smarter malloc
 * Dynamic thread-count updating
 * Faster thread-switching
 * Runtime thread-instruction variability
+* Main-thread exiting (auto dsleep)
 
 ## Tested platforms:
 * Tiva C-series
