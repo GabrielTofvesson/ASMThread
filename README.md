@@ -44,3 +44,7 @@ was locked).
 * Dynamic thread-count updating
 * Faster thread-switching
 * Runtime thread-instruction variability
+
+## Tested platforms:
+* Tiva C-series
+    * TM4C123GH6PM (Evaluation board: TM4C123GXL)
