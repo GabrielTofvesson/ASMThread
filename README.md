@@ -50,7 +50,6 @@ processor should probably be put into deepsleep indefinitely.
 ## Thread design:
 
 ### Thread flags:
-
 These bits should _under no circumstances_ be set manually. To change them,
 call the relevant exported routines.
 From LSB to MSB, the thread flag bits are as follows:
@@ -60,7 +59,6 @@ From LSB to MSB, the thread flag bits are as follows:
     **2-7:** Reserved
 
 ### Thread frame:
-
 Currently, the thread frame system consists of a single component: a pointer.
 The pointer points to the thread stack data. When a thread is first started, it
 contains (at least) a complete register mapping. The default mapping is that
@@ -74,7 +72,6 @@ are popped into their respective registers, as such, a fresh thread's *SP* will
 have the value *STACK_BASE*.
 
 ### Threading with other interrupts:
-
 As it stands, thread-switching will be postponed in the case that it is
 triggered during another ISR. As such, it is important that the system doesn't
 have large amounts of interrupts, as this may impede thread-switching.
